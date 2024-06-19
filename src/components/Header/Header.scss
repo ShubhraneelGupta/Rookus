@@ -1,0 +1,103 @@
+$primary-color: #000;
+$secondary-color: #fff;
+$highlight-color: rgb(201, 253, 116);
+$logo-size: 3.5rem;
+$nav-height: 3rem;
+$sidebar-width: 50vw;
+$font-size: 1rem;
+
+
+.navbar {
+font-family: Helvetica;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $primary-color;
+  color: $secondary-color;
+  box-shadow: 0 2px 4px 0 rgba(255,255,255,.2);
+  margin: 0;
+  padding: 0;
+
+  .logo {
+    font-size: $logo-size;
+    font-weight: bold;
+    padding: .5rem 1.5rem;
+  }
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+
+    a {
+      font-size: $font-size;
+      display: block;
+      color: $secondary-color;
+      text-decoration: none;
+      padding: 1.25rem .75rem;
+      margin: 0 1.5rem;
+
+      &:hover {
+        background-color: $highlight-color;
+        color: $primary-color;
+      }
+    }
+  }
+
+  .hamburger {
+    display: none;
+    margin: 0 1.5rem;
+    flex-direction: column;
+    cursor: pointer;
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: $secondary-color;
+      margin: 3px 0;
+      transition: all 0.4s;
+    }
+  }
+
+  .sidebar {
+    position: fixed;
+    font-size: $font-size;
+    top: 0;
+    right: -$sidebar-width;
+    width: $sidebar-width;
+    height: 100%;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s;
+
+    a {
+      font-family: Helvetica;
+      display: block;
+      width: 100%;
+      color: $secondary-color;
+      text-decoration: none;
+      padding: 1.5rem 3rem;
+
+      &:hover {
+        background-color: $highlight-color;
+        color: $primary-color
+      }
+    }
+
+    &.open {
+      right: 0;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .nav-items {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+}
