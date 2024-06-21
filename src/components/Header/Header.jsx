@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import logo from '../../assets/rookus-logo.jpg'
+
 import './Header.scss';
 
-const Header = () => {
+const Header = ({logoSRC, navItems}) => {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -46,24 +46,25 @@ const Header = () => {
   return (
     <nav className="navbar glass-shadow">
       <div className="logo">
-        <img src={logo} alt="Logo" />
+        <img src={logoSRC} alt="Logo" />
       </div>
+
       <div className={`nav-items ${isOpen ? 'open' : ''}`}>
-        <a href="#home">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#contact">Contact</a>
-        <a href="#features">Features</a>
+        {navItems.map((navItem) => {
+          return <a href={`#${navItem}`}>{navItem}</a>
+        })}
       </div>
+
       <div className="hamburger" ref={hamburgerRef} onClick={toggleMenu}>
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>
       </div>
+
       <div className={`sidebar ${isOpen ? 'open' : ''}`} ref={sidebarRef}>
-        <a href="#home" onClick={toggleMenu}>Home</a>
-        <a href="#about" onClick={toggleMenu}>About Us</a>
-        <a href="#contact" onClick={toggleMenu}>Contact</a>
-        <a href="#features" onClick={toggleMenu}>Features</a>
+        {navItems.map((navItem) => {
+          return <a href={`#${navItem}`} onClick={toggleMenu}>{navItem}</a>
+        })}
       </div>
     </nav>
   );
