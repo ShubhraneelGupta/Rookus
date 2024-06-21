@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import logo from '../../assets/rookus-logo.jpg'
 import './Header.scss';
 
 const Header = () => {
@@ -44,7 +45,9 @@ const Header = () => {
 
   return (
     <nav className="navbar glass-shadow">
-      <div className="logo">Logo</div>
+      <div className="logo">
+        <img src={logo} alt="Logo" />
+      </div>
       <div className={`nav-items ${isOpen ? 'open' : ''}`}>
         <a href="#home">Home</a>
         <a href="#about">About Us</a>
