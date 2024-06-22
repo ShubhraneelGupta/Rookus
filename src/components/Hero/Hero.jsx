@@ -1,5 +1,5 @@
 import './Hero.scss';
-import iPhone from '../../assets/iPhone-png.png';
+import iPhone from '../../assets/DEMO-removebg.png';
 
 const Hero = ({ title }) => {
   return (
@@ -13,6 +13,10 @@ const Hero = ({ title }) => {
           <div className="desc-line desc-line-2">
             ROOKUS. WHERE AI MEETS FASHION
           </div>
+        </div>
+        <div className="button-container">
+          <button className="waitlist-button">Waitlist</button>
+          <button className="demo-button">Try Demo</button>
         </div>
       </div>
       <div className="app">

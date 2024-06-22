@@ -31,11 +31,11 @@ $highlight-color: #cbcac5;
             display: inline-block;
             white-space: nowrap;
             overflow: hidden; /* Ensure overflow is hidden */
-            visibility: hidden; /* Initially hidden */
+            visibility: visible; /* Initially hidden */
         }
 
         .desc-line-1 {
-            animation: typing1 6s steps(45, end) forwards;
+            animation: typing1 2s steps(35, end) forwards;
         }
 
         .desc-line-2 {
@@ -49,7 +49,7 @@ $highlight-color: #cbcac5;
                 visibility: visible; /* Make visible when animation starts */
             }
             to {
-                width: 100%;
+                width: 50%;
             }
         }
 
@@ -62,6 +62,42 @@ $highlight-color: #cbcac5;
                 width: 100%;
             }
         }
+
+        .button-container {
+            margin-top: 20px; /* Adjust margin as needed */
+            display: flex;
+            gap: 15px; /* Space between buttons */
+            margin-left: 3vw;
+
+            .waitlist-button, .demo-button {
+                padding: 12px 24px;
+                font-size: 1.5vw;
+                font-family: monospace;
+                color:white;
+                border: 1.5px solid rgb(255, 255, 255);
+                border-radius: 10px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+
+                &:hover {
+                    background-color: darken(white, 1%);
+                    transform: scale(1.05);
+                    color: darken($color: #000000, $amount: 0);
+                }
+
+                &:active {
+                    transform: scale(1);
+                }
+            }
+
+            .waitlist-button {
+                background-color: #000000;
+            }
+
+            .demo-button {
+                background-color: #000000;
+            }
+        } 
     }
 
     .app {
@@ -74,10 +110,9 @@ $highlight-color: #cbcac5;
             max-width: 100%;
             max-height: auto;
             border-radius: 4.5vh;
-            box-shadow: -5px 5px 5px 0px $highlight-color;
 
             &:hover {
-                box-shadow: -15px 15px 35px 0px $highlight-color;
+                box-shadow: -1px 1px 1px 1px $highlight-color;
             }
         }
     }
@@ -93,6 +128,11 @@ $highlight-color: #cbcac5;
             .desc-line {
                 font-size: larger;
                 text-align: center;
+            }
+
+            .button-container {
+                justify-content: center;
+                margin-left: 0;
             }
         }
 
