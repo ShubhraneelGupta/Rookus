@@ -1,9 +1,8 @@
 $margin-side: 6vw;
 $margin-top: 20vh;
-$highlight-color: #ff985c;
+$highlight-color: #cbcac5;
 
 .wrapper {
-
     height: fit-content;
     display: flex;
     align-items: center;
@@ -13,22 +12,56 @@ $highlight-color: #ff985c;
         flex: 2 1;
         display: flex;
         flex-direction: column;
-        
+
         img {
             max-width: 100%;
             max-height: auto;
-
         }
-    
-        .desc {
+
+        .desc-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .desc-line {
             font-family: monospace;
             color: rgb(208, 208, 208);
             font-size: 1.15vw;
             margin-left: 3vw;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden; /* Ensure overflow is hidden */
+            visibility: hidden; /* Initially hidden */
         }
 
-        
+        .desc-line-1 {
+            animation: typing1 6s steps(45, end) forwards;
+        }
 
+        .desc-line-2 {
+            animation: typing2 6s steps(35, end) forwards;
+            animation-delay: 8s; /* Delay for second line animation */
+        }
+
+        @keyframes typing1 {
+            from {
+                width: 0;
+                visibility: visible; /* Make visible when animation starts */
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes typing2 {
+            from {
+                width: 0;
+                visibility: visible; /* Make visible when animation starts */
+            }
+            to {
+                width: 100%;
+            }
+        }
     }
 
     .app {
@@ -36,13 +69,14 @@ $highlight-color: #ff985c;
         display: flex;
         justify-content: flex-end;
         margin-top: 5rem;
+
         img {
             max-width: 100%;
             max-height: auto;
             border-radius: 4.5vh;
-            box-shadow: -15px 15px 15px 0px $highlight-color;
+            box-shadow: -5px 5px 5px 0px $highlight-color;
 
-            &:hover{
+            &:hover {
                 box-shadow: -15px 15px 35px 0px $highlight-color;
             }
         }
@@ -52,13 +86,16 @@ $highlight-color: #ff985c;
 @media (max-width: 1000px) {
     .wrapper {
         flex-direction: column;
+
         .title {
             margin-bottom: 10vh;
-            .desc {
+
+            .desc-line {
                 font-size: larger;
                 text-align: center;
             }
         }
+
         .app {
             justify-content: center;
         }
