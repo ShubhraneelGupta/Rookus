@@ -1,12 +1,11 @@
 $margin-side: 6vw;
-$margin-top: 23vh;
+$margin-top: 20vh;
 $highlight-color: #ff985c;
 
 .wrapper {
 
     height: fit-content;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin: $margin-top $margin-side;
 
@@ -14,7 +13,6 @@ $highlight-color: #ff985c;
         flex: 2 1;
         display: flex;
         flex-direction: column;
-
         
         img {
             max-width: 100%;
@@ -37,6 +35,7 @@ $highlight-color: #ff985c;
         flex: 1 2;
         display: flex;
         justify-content: flex-end;
+        margin-top: 5rem;
         img {
             max-width: 100%;
             max-height: auto;
