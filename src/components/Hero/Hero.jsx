@@ -1,37 +1,17 @@
 import './Hero.scss';
 import { motion } from 'framer-motion';
 import iPhone from '../../assets/DEMO-removebg.png';
+import {motion} from 'framer-motion'
 
 const Hero = ({ title }) => {
   return (
     <div className="wrapper">
       <div className="title">
-      <img src={title} alt="" srcset="" />    
-        <div className="desc-container">
-          <motion.div
-            className="desc-line desc-line-1"
-            initial={{ width: 0, opacity: 0 }}
-            animate={{ width: '100%', opacity: 1 }}
-            transition={{ duration: 3, ease: 'easeInOut' }}
-          >
-            <span>WEAR YOUR CREATIVITY</span>.<span style={{ fontStyle: 'italic' }}>EXPRESS YOURSELF</span>
-          </motion.div>
-          <motion.div
-            className="desc-line desc-line-2"
-            initial={{ width: 0, opacity: 0 }}
-            animate={{ width: '100%', opacity: 1 }}
-            transition={{ duration: 3, ease: 'easeInOut', delay: 3 }}
-          >
-            <strong>ROOKUS,</strong> WHERE AI MEETS FASHION
-          </motion.div>
-          <motion.div
-            className="desc-line desc-line-3"
-            initial={{ width: 0, opacity: 0 }}
-            animate={{ width: '100%', opacity: 1 }}
-            transition={{ duration: 3, ease: 'easeInOut', delay: 6 }}
-          >
-            
-          </motion.div>
+            <img src={title} alt="" srcset="" />    
+
+        <div className="desc">
+            WEAR <span>YOUR CREATIVITY</span>.<span style={{ fontStyle: 'italic' }}>EXPRESS YOURSELF</span>
+            <br/>ROOKUS. WHERE AI MEETS FASHION
         </div>
         <div className="button-container">
           <motion.button
