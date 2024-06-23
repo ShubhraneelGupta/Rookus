@@ -77,7 +77,7 @@ $font-size: 1rem;
     position: fixed;
     font-size: $font-size;
     top: 0;
-    right: -$sidebar-width;
+    right: calc(-2*$sidebar-width);
     width: $sidebar-width;
     height: 100%;
     flex-direction: column;
