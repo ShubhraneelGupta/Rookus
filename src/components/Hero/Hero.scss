@@ -3,141 +3,137 @@ $margin-top: 20vh;
 $highlight-color: #cbcac5;
 
 .wrapper {
-    height: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: $margin-top $margin-side;
+
+  .title {
+    flex: 2 1;
     display: flex;
-    align-items: center;
-    margin: $margin-top $margin-side;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
 
-    .title {
-        flex: 2 1;
-        display: flex;
-        flex-direction: column;
-
-        img {
-            max-width: 100%;
-            max-height: auto;
-        }
-
-        .desc-container {
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .desc-line {
-            font-family: monospace;
-            color: rgb(208, 208, 208);
-            font-size: 1.15vw;
-            margin-left: 3vw;
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden; /* Ensure overflow is hidden */
-            visibility: visible; /* Initially hidden */
-        }
-
-        .desc-line-1 {
-            animation: typing1 2s steps(35, end) forwards;
-        }
-
-        .desc-line-2 {
-            animation: typing2 6s steps(35, end) forwards;
-            animation-delay: 8s; /* Delay for second line animation */
-        }
-
-        @keyframes typing1 {
-            from {
-                width: 0;
-                visibility: visible; /* Make visible when animation starts */
-            }
-            to {
-                width: 50%;
-            }
-        }
-
-        @keyframes typing2 {
-            from {
-                width: 0;
-                visibility: visible; /* Make visible when animation starts */
-            }
-            to {
-                width: 100%;
-            }
-        }
-
-        .button-container {
-            margin-top: 20px; /* Adjust margin as needed */
-            display: flex;
-            gap: 15px; /* Space between buttons */
-            margin-left: 3vw;
-
-            .waitlist-button, .demo-button {
-                padding: 12px 24px;
-                font-size: 1.5vw;
-                font-family: monospace;
-                color:white;
-                border: 1.5px solid rgb(255, 255, 255);
-                border-radius: 10px;
-                cursor: pointer;
-                transition: background-color 0.3s ease, transform 0.3s ease;
-
-                &:hover {
-                    background-color: darken(white, 1%);
-                    transform: scale(1.05);
-                    color: darken($color: #000000, $amount: 0);
-                }
-
-                &:active {
-                    transform: scale(1);
-                }
-            }
-
-            .waitlist-button {
-                background-color: #000000;
-            }
-
-            .demo-button {
-                background-color: #000000;
-            }
-        } 
+    img {
+      max-width: 100%;
+      max-height: auto;
     }
 
-    .app {
-        flex: 1 2;
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 5rem;
-
-        img {
-            max-width: 100%;
-            max-height: auto;
-            border-radius: 4.5vh;
-
-            &:hover {
-                box-shadow: -1px 1px 1px 1px $highlight-color;
-            }
-        }
+    .desc-container {
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center items horizontally */
     }
+
+    .desc-line {
+      font-family: monospace;
+      color: rgb(208, 208, 208);
+      font-size: 1.15vw;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      visibility: visible;
+      line-height: 1.2;
+    }
+
+    .button-container {
+      margin-top: 20px; /* Adjust margin as needed */
+      display: flex;
+      gap: 15px; /* Space between buttons */
+      justify-content: center; /* Center buttons horizontally */
+
+      .waitlist-button,
+      .demo-button {
+        padding: 12px 24px;
+        font-size: 1.5vw;
+        font-family: monospace;
+        color: white;
+        border: 1.5px solid rgb(255, 255, 255);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+          background-color: darken(white, 1%);
+          transform: scale(1.05);
+          color: darken($color: #000000, $amount: 0);
+        }
+
+        &:active {
+          transform: scale(1);
+        }
+      }
+
+      .waitlist-button {
+        background-color: #000000;
+      }
+
+      .demo-button {
+        background-color: #000000;
+      }
+    }
+  }
+
+  .app {
+    flex: 1 2;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5rem;
+
+    img {
+      max-width: 100%;
+      max-height: auto;
+      border-radius: 4.5vh;
+
+    //   &:hover {
+    //     box-shadow: -1px 1px 1px 1px $highlight-color;
+    //   }
+    }
+  }
+
+  .footer {
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    font-family: monospace;
+    color: rgb(208, 208, 208);
+    background-color: #2c2c2c;
+    margin-top: auto;
+
+    p {
+      margin: 0;
+    }
+  }
 }
 
 @media (max-width: 1000px) {
-    .wrapper {
-        flex-direction: column;
+  .wrapper {
+    flex-direction: column;
 
-        .title {
-            margin-bottom: 10vh;
+    .title {
+      margin-bottom: 10vh;
+      align-items: center; /* Center items horizontally */
 
-            .desc-line {
-                font-size: larger;
-                text-align: center;
-            }
+      .desc-line {
+        font-size: larger;
+        text-align: center;
+      }
 
-            .button-container {
-                justify-content: center;
-                margin-left: 0;
-            }
-        }
-
-        .app {
-            justify-content: center;
-        }
+      .button-container {
+        justify-content: center;
+        margin-left: 0;
+      }
     }
+
+    .app {
+      justify-content: center;
+    }
+  }
+
+  .footer {
+    font-size: smaller;
+  }
 }
