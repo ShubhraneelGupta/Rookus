@@ -6,13 +6,9 @@ const Hero = ({ title }) => {
     <div className="wrapper">
       <div className="title">
         <img src={title} alt="Title" />
-        <div className="desc-container">
-          <div className="desc-line desc-line-1">
+        <div className="desc">
             WEAR <span>YOUR CREATIVITY</span>.<span style={{ fontStyle: 'italic' }}>EXPRESS YOURSELF</span>
-          </div>
-          <div className="desc-line desc-line-2">
-            ROOKUS. WHERE AI MEETS FASHION
-          </div>
+            <br/>ROOKUS. WHERE AI MEETS FASHION
         </div>
         <div className="button-container">
           <button className="waitlist-button">Waitlist</button>

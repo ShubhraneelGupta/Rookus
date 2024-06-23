@@ -1,15 +1,15 @@
 $margin-side: 6vw;
-$margin-top: 20vh;
-$highlight-color: #cbcac5;
+$margin-top: 10vh;
+$highlight-color: #ff985c;
 
 .wrapper {
     height: fit-content;
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin: $margin-top $margin-side;
 
     .title {
-        flex: 2 1;
         display: flex;
         flex-direction: column;
 
@@ -18,56 +18,19 @@ $highlight-color: #cbcac5;
             max-height: auto;
         }
 
-        .desc-container {
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .desc-line {
+        .desc {
             font-family: monospace;
-            color: rgb(208, 208, 208);
-            font-size: 1.15vw;
-            margin-left: 3vw;
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden; /* Ensure overflow is hidden */
-            visibility: visible; /* Initially hidden */
+            font-size: x-large;
+            color: white;
+            margin-left: 3.75vw;
         }
-
-        .desc-line-1 {
-            animation: typing1 2s steps(35, end) forwards;
-        }
-
-        .desc-line-2 {
-            animation: typing2 6s steps(35, end) forwards;
-            animation-delay: 8s; /* Delay for second line animation */
-        }
-
-        @keyframes typing1 {
-            from {
-                width: 0;
-                visibility: visible; /* Make visible when animation starts */
-            }
-            to {
-                width: 50%;
-            }
-        }
-
-        @keyframes typing2 {
-            from {
-                width: 0;
-                visibility: visible; /* Make visible when animation starts */
-            }
-            to {
-                width: 100%;
-            }
-        }
-
         .button-container {
-            margin-top: 20px; /* Adjust margin as needed */
             display: flex;
-            gap: 15px; /* Space between buttons */
-            margin-left: 3vw;
+            justify-content: flex-end;
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            margin-right: 3.75vw;
 
             .waitlist-button, .demo-button {
                 padding: 12px 24px;
@@ -80,7 +43,7 @@ $highlight-color: #cbcac5;
                 transition: background-color 0.3s ease, transform 0.3s ease;
 
                 &:hover {
-                    background-color: darken(white, 1%);
+                    background-color: darken(#ff985c, 1%);
                     transform: scale(1.05);
                     color: darken($color: #000000, $amount: 0);
                 }
@@ -101,14 +64,15 @@ $highlight-color: #cbcac5;
     }
 
     .app {
-        flex: 1 2;
+        width: 80%;
+        background-color: papayawhip;
+        border-radius: 10px;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         margin-top: 5rem;
 
         img {
-            max-width: 100%;
-            max-height: auto;
+
             border-radius: 4.5vh;
 
             &:hover {
@@ -120,24 +84,12 @@ $highlight-color: #cbcac5;
 
 @media (max-width: 1000px) {
     .wrapper {
-        flex-direction: column;
 
         .title {
-            margin-bottom: 10vh;
 
-            .desc-line {
-                font-size: larger;
-                text-align: center;
+            .desc {
+                font-size: large;
             }
-
-            .button-container {
-                justify-content: center;
-                margin-left: 0;
-            }
-        }
-
-        .app {
-            justify-content: center;
         }
     }
 }
