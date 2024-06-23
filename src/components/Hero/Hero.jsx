@@ -1,5 +1,4 @@
 import './Hero.scss';
-import { motion } from 'framer-motion';
 import iPhone from '../../assets/DEMO-removebg.png';
 import {motion} from 'framer-motion'
 
