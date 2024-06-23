@@ -30,7 +30,7 @@ const Hero = ({ title }) => {
             className="waitlist-button"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, ease: 'easeInOut', delay: 6 }}
+            transition={{ duration: 1.5, ease: 'easeInOut', delay: 6, type:"tween" }}
           >
             Waitlist
           </motion.button>
@@ -38,7 +38,7 @@ const Hero = ({ title }) => {
             className="demo-button"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, ease: 'easeInOut', delay: 6.5 }}
+            transition={{ duration: 1.5, ease: 'easeInOut', delay: 6.5, type:"tween" }}
           >
             Try Demo
           </motion.button>
