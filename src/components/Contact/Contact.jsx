@@ -1,61 +1,63 @@
-import React, { useState } from 'react';
-import './Contact.scss';
+// Contact.jsx
+
+import { useState } from 'react';
+import emailjs from 'emailjs-com';
+import './Contact.scss'; // Import Contact component styles
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    from_name: '',
+    user_name: '',
+    user_email: '',
+    reply_to: '',
   });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
-    // Here you can handle form submission, such as sending the data to a server
+
+    emailjs.sendForm('service_ab0ncrk', 'template_wrhighr')
+      .then((result) => {
+        console.log(result.text);
+        alert('Message sent successfully!');
+        setFormData({
+          from_name: '',
+          user_name: '',
+          user_email: '',
+          reply_to: '',
+        });
+      }, (error) => {
+        console.error(error.text);
+        alert('Oops! Something went wrong. Please try again later.');
+      });
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-    <div className="contact">
+    <div className="contact-container">
       <h2>Contact Us</h2>
-      <form onSubmit={handleSubmit}>
+      <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+          <label htmlFor="from_name">Your Name</label>
+          <input type="text" id="from_name" name="from_name" value={formData.from_name} onChange={handleChange} required />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+          <label htmlFor="user_name">User Name</label>
+          <input type="text" id="user_name" name="user_name" value={formData.user_name} onChange={handleChange} required />
         </div>
         <div className="form-group">
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
+          <label htmlFor="user_email">Your Email</label>
+          <input type="email" id="user_email" name="user_email" value={formData.user_email} onChange={handleChange} required />
         </div>
-        <button type="submit">Send</button>
+        <div className="form-group">
+          <label htmlFor="reply_to">Reply To</label>
+          <input type="text" id="reply_to" name="reply_to" value={formData.reply_to} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <button type="submit">Send Message</button>
+        </div>
       </form>
     </div>
   );
