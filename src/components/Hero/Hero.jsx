@@ -55,7 +55,6 @@ const Hero = ({ title }) => {
       </div>
       <div className="app">
         <img src={iPhone} alt="iPhone" />
-        <span>DESIGN, SHARE, ORDER</span>
       </div>
       {showWaitlist && (
         <div className="modal-backdrop" onClick={handleCloseModal}>
@@ -65,9 +64,6 @@ const Hero = ({ title }) => {
           </div>
         </div>
       )}
-      <footer className="footer">
-        <p>&copy; 2024 Rookus. All rights reserved.</p>
-      </footer>
     </div>
   );
 };
