@@ -6,13 +6,19 @@ const Hero = ({ title }) => {
   return (
     <div className="wrapper">
       <div className="title">
-            <img src={title} alt="" srcset="" />    
+            <motion.div
+                initial={{width: 0, opacity: 0}}
+                animate={{width: '100%', opacity: 1}}
+                transition={{duration: 3, type:"tween"}}
+            >
+                <img src={title} alt="" srcset="" />
+            </motion.div>    
             <div className="desc-container">  
             <motion.div
             className="desc-line desc-line-1"
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: '100%', opacity: 1 }}
-            transition={{ duration: 3, ease: 'easeInOut' }}
+            transition={{ duration: 3, ease: 'easeInOut'}}
           >
             <span>WEAR YOUR CREATIVITY</span>.<span style={{ fontStyle: 'italic' }}>EXPRESS YOURSELF</span>
           </motion.div>

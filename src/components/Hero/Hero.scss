@@ -50,15 +50,17 @@ $highlight-color: #ff985c;
         font-size: 1.5vw;
         font-family: monospace;
         color: white;
-        border: 1.5px solid rgb(255, 255, 255);
+        border: 1px solid white;
         border-radius: 10px;
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.3s ease;
 
         &:hover {
-          background-color: darken(white, 1%);
-          transform: scale(1.05);
-          color: darken($color: #000000, $amount: 0);
+            background: $highlight-color;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgb(255, 152, 92, 0.9);
+            backdrop-filter: blur(13px);
+            transform: scale(1.05);
         }
 
         &:active {
