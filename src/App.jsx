@@ -1,23 +1,47 @@
 // App.jsx
-import React from 'react';
-import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import Footer from './components/Footer/Footer';
-import Chatbot from './components/Chatbot/Chatbot';
-import logo from './assets/rookus-logo.png';
-import title from './assets/Rookus-title.png';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom"
 
-const App = () => {
-  const navItems = ['Home', 'Team', 'Contact', 'Features'];
+import Layout from './Layout'
+import React from 'react';
+import Hero from './components/Hero/Hero';  
+import title from './assets/Rookus-title-4.png';
+import Contact from './components/Contact/Contact'
+
+
+const Home = () => {
+  return <Hero title={title} />
+}
+
+const ContactUs = () => {
+  return <Contact/>
+}
+
+
+function App() {
+  const router = createBrowserRouter([
+    {
+
+      element: <Layout />,
+
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/contact",
+          element: <ContactUs />,
+        },
+      ],
+    },
+  ])
 
   return (
-    <>
-      <Header logoSRC={logo} navItems={navItems} />
-      <Hero title={title} />
-      <Footer />
-      <Chatbot />
-    </>
-  );
-};
+      <RouterProvider router={router} />
+  )
+} 
 
 export default App;
