@@ -4,7 +4,7 @@ import {
   RouterProvider,
 } from "react-router-dom"
 
-import Layout from './layout'
+import Layout from './Layout'
 import React from 'react';
 import Hero from './components/Hero/Hero';  
 import title from './assets/Rookus-title-4.png';
