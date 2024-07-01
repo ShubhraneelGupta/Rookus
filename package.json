@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gradio/client": "^1.2.1",
     "axios": "^1.7.2",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^11.2.11",

@@ -11,6 +11,10 @@ const Hero = ({ title }) => {
     setShowWaitlist(false);
   };
 
+  const handleDemoClick = () => {
+    window.open('https://huggingface.co/spaces/abidlabs/Gradio-quickstart', '_blank');
+  };
+
   return (
     <div className="wrapper">
       <div className="title">
@@ -48,6 +52,7 @@ const Hero = ({ title }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: 'easeInOut', delay: 6.5 }}
+            onClick={handleDemoClick}
           >
             Try Demo
           </motion.button>
