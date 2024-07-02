@@ -13,7 +13,7 @@ const TeamMember = ({ image, name, description }) => {
       <div className="team-member-inner">
         <div className="team-member-front">
           <img src={image} alt={name} />
-          <span>{name}</span>
+          <span style={{fontSize:"1.5vw", margin:"1rem"}}>{name}</span>
         </div>
         <div className="team-member-back">
           <h3>{name}</h3>

@@ -35,21 +35,6 @@ const teamMembers = [
   },
   {
     image: `${kafka}`,
-    name: 'Member 1',
-    description: 'Description for member 1',
-  },
-  {
-    image: `${kafka}`,
-    name: 'Member 2',
-    description: 'Description for member 2',
-  },
-  {
-    image: `${kafka}`,
-    name: 'Member 1',
-    description: 'Description for member 1',
-  },
-  {
-    image: `${kafka}`,
     name: 'Member 2',
     description: 'Description for member 2',
   },
