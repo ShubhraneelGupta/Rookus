@@ -9,6 +9,23 @@ import React from 'react';
 import Hero from './components/Hero/Hero';  
 import title from './assets/Rookus-title-4.png';
 import Contact from './components/Contact/Contact'
+import Team from './components/Team/Team'
+import kafka from './assets/kafka.jpg'
+
+const teamMembers = [
+  {
+    image: `${kafka}`,
+    name: 'Member 1',
+    description: 'Description for member 1',
+  },
+  {
+    image: `${kafka}`,
+    name: 'Member 2',
+    description: 'Description for member 2',
+  },
+];
+
+
 
 
 const Home = () => {
@@ -17,10 +34,6 @@ const Home = () => {
 
 const ContactUs = () => {
   return <Contact/>
-}
-
-const Team = () => {
-  return <h1 style={{color:"white"}}>WORKING ON THIS</h1>
 }
 
 const Features = () => {
@@ -48,7 +61,7 @@ function App() {
         },
         {
           path: "/team",
-          element: <Team/>
+          element: <Team members={teamMembers} />
         },
         {
           path: "/features",

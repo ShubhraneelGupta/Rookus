@@ -47,7 +47,9 @@ const Header = ({ logoSRC, navItems }) => {
   return (
     <nav className="navbar glass-shadow">
       <div className="logo">
-        <img src={logoSRC} alt="Logo" />
+        <NavLink to='/'>
+          <img src={logoSRC} alt="Logo" />
+        </NavLink>
       </div>
 
       <div className={`nav-items ${isOpen ? 'open' : ''}`}>
