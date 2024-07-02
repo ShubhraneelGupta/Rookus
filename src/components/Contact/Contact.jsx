@@ -42,7 +42,7 @@ const Contact = () => {
         <h2>Get in Touch</h2>
         <h1>Convey Your Ideas to Us</h1>
         <p>
-          Contact us for questions, technical assistance, or collaboration
+          Contact us for questions, technical assistance,hiring or collaboration
           opportunities via the contact information provided.
         </p>
         <div className="contact-details">
@@ -52,11 +52,11 @@ const Contact = () => {
           </div>
           <div className="contact-detail">
             <span role="img" aria-label="email">✉️</span>
-            <a href="mailto:hello@reallygreatsite.com">bhaiya email daal do idhar</a>
+            <a href="mailto:hello@reallygreatsite.com">nikhil@rookus.in</a>
           </div>
           <div className="contact-detail">
             <span role="img" aria-label="address">📍</span>
-            <address>MARS :/</address>
+            <address>/</address>
           </div>
         </div>
       </div>
