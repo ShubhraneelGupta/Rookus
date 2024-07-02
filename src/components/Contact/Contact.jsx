@@ -17,10 +17,10 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     console.log('Form data:', form); 
-  
-    emailjs.send('service_ab0ncrk', 'template_wrhighr')
+
+    emailjs.send('service_ab0ncrk', 'template_wrhighr', form, 'JRlaG3hag5xl7193h')
       .then((result) => {
         console.log(result.text);
         alert('Message sent successfully!');
@@ -48,7 +48,7 @@ const Contact = () => {
         <div className="contact-details">
           <div className="contact-detail">
             <span role="img" aria-label="phone">📞</span>
-            <a href="tel:+1234567890">+91 96606 73731</a>
+            <a href="tel:+919660673731">+91 96606 73731</a>
           </div>
           <div className="contact-detail">
             <span role="img" aria-label="email">✉️</span>
