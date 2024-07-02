@@ -20,7 +20,7 @@ const Contact = () => {
 
     console.log('Form data:', form); 
 
-    emailjs.send('service_ab0ncrk', 'template_wrhighr', form, 'JRlaG3hag5xl7193h')
+    emailjs.send('service_ab0ncrk', 'template_wrhighr', form, 'user_token')
       .then((result) => {
         console.log(result.text);
         alert('Message sent successfully!');
@@ -42,7 +42,7 @@ const Contact = () => {
         <h2>Get in Touch</h2>
         <h1>Convey Your Ideas to Us</h1>
         <p>
-          Contact us for questions, technical assistance,hiring or collaboration
+          Contact us for questions, technical assistance, or collaboration
           opportunities via the contact information provided.
         </p>
         <div className="contact-details">
@@ -52,12 +52,38 @@ const Contact = () => {
           </div>
           <div className="contact-detail">
             <span role="img" aria-label="email">✉️</span>
-            <a href="mailto:hello@reallygreatsite.com">nikhil@rookus.in</a>
+            <a href="mailto:hello@reallygreatsite.com">bhaiya email daal do idhar</a>
           </div>
           <div className="contact-detail">
             <span role="img" aria-label="address">📍</span>
-            <address>/</address>
+            <address>MARS :/</address>
           </div>
+        </div>
+        <div className="social-media-buttons">
+          <a
+            href="https://api.whatsapp.com/send?phone=919660673731"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whatsapp-button"
+          >
+            Message on WhatsApp
+          </a>
+          <a
+            href="https://www.instagram.com/your-instagram-username"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="instagram-button"
+          >
+            Open Instagram
+          </a>
+          <a
+            href="https://www.linkedin.com/in/your-linkedin-username"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="linkedin-button"
+          >
+            Open LinkedIn
+          </a>
         </div>
       </div>
       <div className="contact-form">
