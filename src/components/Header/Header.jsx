@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {Link, NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 import './Header.scss';
 
-const Header = ({logoSRC, navItems}) => {
+const Header = ({ logoSRC, navItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -51,9 +51,11 @@ const Header = ({logoSRC, navItems}) => {
       </div>
 
       <div className={`nav-items ${isOpen ? 'open' : ''}`}>
-        {navItems.map((navItem, i) => {
-          return <a key={i} href={`#${navItem}`}>{navItem}</a>
-        })}
+        {navItems.map((navItem, i) => (
+          <NavLink key={i} to={`/${navItem}`} activeClassName="active">
+            {navItem}
+          </NavLink>
+        ))}
       </div>
 
       <div className="hamburger" ref={hamburgerRef} onClick={toggleMenu}>
@@ -63,9 +65,11 @@ const Header = ({logoSRC, navItems}) => {
       </div>
 
       <div className={`sidebar ${isOpen ? 'open' : ''}`} ref={sidebarRef}>
-        {navItems.map((navItem, i) => {
-          return <a key={i} href={`#${navItem}`} onClick={toggleMenu}>{navItem}</a>
-        })}
+        {navItems.map((navItem, i) => (
+          <NavLink key={i} to={`/${navItem}`} onClick={toggleMenu} activeClassName="active">
+            {navItem}
+          </NavLink>
+        ))}
       </div>
     </nav>
   );

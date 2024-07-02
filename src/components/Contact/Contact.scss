@@ -17,7 +17,7 @@ $font-size-small: 0.875rem;
 
   .contact-info {
     flex: 1;
-    min-width: 18.75rem; // 300px
+    min-width: 18.75rem;
 
     h2 {
       font-size: $font-size-medium;
@@ -57,7 +57,7 @@ $font-size-small: 0.875rem;
 
   .contact-form {
     flex: 1;
-    min-width: 18.75rem; // 300px
+    min-width: 18.75rem;
 
     form {
       display: flex;
@@ -83,7 +83,7 @@ $font-size-small: 0.875rem;
 
         textarea {
           resize: vertical;
-          height: 9rem; // Increased height
+          height: 9rem; 
         }
       }
 
