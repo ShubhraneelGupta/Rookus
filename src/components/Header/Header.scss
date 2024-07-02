@@ -7,7 +7,7 @@ $sidebar-width: 50vw;
 $font-size: 1rem;
 
 .navbar {
-  z-index: 10000000;
+  z-index: 10;
   width: 100%;
   position: fixed;
   top: 0;
@@ -95,11 +95,11 @@ $font-size: 1rem;
       color: $secondary-color;
       text-decoration: none;
       padding: 1.5rem 3rem;
+      margin-bottom: 1rem;
 
       &.active,
       &:hover {
         background: $highlight-color;
-        border-radius: 10px 0 0 10px;
         box-shadow: 0 4px 30px $highlight-color;
         padding-right: 1.5rem;
       }

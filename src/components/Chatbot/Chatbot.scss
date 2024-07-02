@@ -11,7 +11,7 @@ $base-font-size: 16px;
   position: fixed;
   bottom: 1.25rem; // 20px
   right: 1.25rem; // 20px
-  z-index: 1000;
+  z-index: 9;
 
   .chatbot-icon {
     width: 3.75rem; // 60px
@@ -35,14 +35,11 @@ $base-font-size: 16px;
     height: 25rem; 
     padding: 1.25rem; 
     display: flex;
+    background-color: white;
+    border-radius: 10px;
     flex-direction: column;
     justify-content: space-between;
 
-    background: rgb(255, 255, 255);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
 
     .chatbot-header {
       display: flex;
@@ -50,7 +47,7 @@ $base-font-size: 16px;
       align-items: center;
 
       .close-button {
-        color: white;
+        color: black;
         border: none;
         font-size: 1.25rem; // 20px
         cursor: pointer;
