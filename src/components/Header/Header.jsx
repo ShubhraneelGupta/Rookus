@@ -51,8 +51,8 @@ const Header = ({logoSRC, navItems}) => {
       </div>
 
       <div className={`nav-items ${isOpen ? 'open' : ''}`}>
-        {navItems.map((navItem) => {
-          return <a href={`#${navItem}`}>{navItem}</a>
+        {navItems.map((navItem, i) => {
+          return <a key={i} href={`#${navItem}`}>{navItem}</a>
         })}
       </div>
 
@@ -63,8 +63,8 @@ const Header = ({logoSRC, navItems}) => {
       </div>
 
       <div className={`sidebar ${isOpen ? 'open' : ''}`} ref={sidebarRef}>
-        {navItems.map((navItem) => {
-          return <a href={`#${navItem}`} onClick={toggleMenu}>{navItem}</a>
+        {navItems.map((navItem, i) => {
+          return <a key={i} href={`#${navItem}`} onClick={toggleMenu}>{navItem}</a>
         })}
       </div>
     </nav>

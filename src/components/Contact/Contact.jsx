@@ -1,27 +1,34 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import './Contact.scss';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     from_name: '',
-    user_name: '',
     user_email: '',
-    reply_to: '',
+    phoneNumber: '',
+    message: '',
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    emailjs.sendForm('service_ab0ncrk', 'template_wrhighr')
+  
+    console.log('Form data:', form); 
+  
+    emailjs.send('service_ab0ncrk', 'template_wrhighr')
       .then((result) => {
         console.log(result.text);
         alert('Message sent successfully!');
-        setFormData({
+        setForm({
           from_name: '',
-          user_name: '',
           user_email: '',
-          reply_to: '',
+          phoneNumber: '',
+          message: '',
         });
       }, (error) => {
         console.error(error.text);
@@ -29,34 +36,74 @@ const Contact = () => {
       });
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   return (
     <div className="contact-container">
-      <h2>Contact Us</h2>
-      <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="from_name">Your Name</label>
-          <input type="text" id="from_name" name="from_name" value={formData.from_name} onChange={handleChange} required />
+      <div className="contact-info">
+        <h2>Get in Touch</h2>
+        <h1>Convey Your Ideas to Us</h1>
+        <p>
+          Contact us for questions, technical assistance, or collaboration
+          opportunities via the contact information provided.
+        </p>
+        <div className="contact-details">
+          <div className="contact-detail">
+            <span role="img" aria-label="phone">📞</span>
+            <a href="tel:+1234567890">+91 96606 73731</a>
+          </div>
+          <div className="contact-detail">
+            <span role="img" aria-label="email">✉️</span>
+            <a href="mailto:hello@reallygreatsite.com">bhaiya email daal do idhar</a>
+          </div>
+          <div className="contact-detail">
+            <span role="img" aria-label="address">📍</span>
+            <address>MARS :/</address>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="user_name">User Name</label>
-          <input type="text" id="user_name" name="user_name" value={formData.user_name} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <label htmlFor="user_email">Your Email</label>
-          <input type="email" id="user_email" name="user_email" value={formData.user_email} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <label htmlFor="reply_to">Reply To</label>
-          <input type="text" id="reply_to" name="reply_to" value={formData.reply_to} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <button type="submit">Send Message</button>
-        </div>
-      </form>
+      </div>
+      <div className="contact-form">
+        <form onSubmit={handleSubmit}>
+          <label>
+            Name
+            <input
+              type="text"
+              name="from_name"
+              value={form.from_name}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <label>
+            Email
+            <input
+              type="email"
+              name="user_email"
+              value={form.user_email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <label>
+            Phone Number
+            <input
+              type="tel"
+              name="phoneNumber"
+              value={form.phoneNumber}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Message
+            <textarea
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              required
+              rows="6"
+            />
+          </label>
+          <button type="submit">Submit Now</button>
+        </form>
+      </div>
     </div>
   );
 };

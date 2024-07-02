@@ -7,14 +7,23 @@ import logo from './assets/rookus-logo.png';
 const Layout = () => {
     const navItems = ['Home', 'Team', 'Contact', 'Features'];
     return (
-        <>
+        <div style={{
+            display:"flex",
+            flexDirection:"column",
+            minHeight:"100vh"
+        }}>
             <Header logoSRC={logo} navItems={navItems} />
-            <main>                
+            <main style={{
+                flex: "1",
+                display:"flex", 
+                flexDirection:"column", 
+                justifyContent:"center", 
+                alignItems:"center"}}>                
                 <Outlet />
             </main>
             <Footer />
             <Chatbot/>
-        </>
+        </div>
     )
 }
 
