@@ -1,6 +1,6 @@
 $primary-color: #000;
 $secondary-color: #fff;
-$highlight-color: #E69006;
+$highlight-color: #f9a826;
 $nav-height: 6rem;
 $logo-height: 5rem;
 $sidebar-width: 50vw;
@@ -72,6 +72,7 @@ $font-size: 1rem;
   }
 
   .sidebar {
+    z-index: 100000;
     display: none;
     position: fixed;
     font-size: $font-size;
