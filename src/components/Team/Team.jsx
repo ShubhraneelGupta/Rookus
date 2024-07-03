@@ -1,28 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Team.scss';
 
 const TeamMember = ({ image, name, role, description, email, linkedIn }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const handleFlip = () => {
-    setIsFlipped(!isFlipped);
-  };
-
   return (
-    <div className={`team-member ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
-      <div className="team-member-inner">
-        <div className="team-member-front">
-          <img src={image} alt={name} />
+    <div className="team-member">
+      <img src={image} alt={name} className="member-image" />
+      <div className="member-details">
+        <div className="member-info">
           <span className="member-name">{name}</span>
           <span className="member-role">{role}</span>
         </div>
-        <div className="team-member-back">
-          <h3>{name}</h3>
-          <h4>{role}</h4>
-          <p>{description}</p>
-          <p>Email: <a href={`mailto:${email}`}>{email}</a></p>
-          <p>LinkedIn: <a href={linkedIn} target="_blank" rel="noopener noreferrer">View Profile</a></p>
-        </div>
+        <p className="member-description">{description}</p>
+        <p className="member-contact">
+          <span>Email: <a href={`mailto:${email}`}>{email}</a></span>
+          <span>LinkedIn: <a href={linkedIn} target="_blank" rel="noopener noreferrer">View Profile</a></span>
+        </p>
       </div>
     </div>
   );
@@ -61,6 +53,14 @@ const Team = () => {
       description: 'Bob ensures our infrastructure is robust and scalable.',
       email: 'bob.brown@example.com',
       linkedIn: 'https://www.linkedin.com/in/bobbrown'
+    },
+    {
+      image: 'https://via.placeholder.com/80',
+      name: 'Charlie Green',
+      role: 'Data Scientist',
+      description: 'Charlie specializes in data analysis and machine learning.',
+      email: 'charlie.green@example.com',
+      linkedIn: 'https://www.linkedin.com/in/charliegreen'
     },
   ];
 

@@ -2,17 +2,24 @@ import './Hero.scss';
 import { motion } from 'framer-motion';
 import iPhone from '../../assets/DEMO-removebg.png';
 import { useState } from 'react';
-import Waitlist from '../Waitlist/Waitlist';
+import Demo from '../Demo/Demo'; // Ensure correct import path
+import Waitlist from '../Waitlist/Waitlist'; // Ensure correct import path
 
 const Hero = ({ title }) => {
   const [showWaitlist, setShowWaitlist] = useState(false);
+  const [showDemo, setShowDemo] = useState(false);
 
   const handleCloseModal = () => {
     setShowWaitlist(false);
+    setShowDemo(false);
+  };
+
+  const handleWaitlistClick = () => {
+    setShowWaitlist(true);
   };
 
   const handleDemoClick = () => {
-    window.open('https://huggingface.co/spaces/abidlabs/Gradio-quickstart', '_blank');
+    setShowDemo(true);
   };
 
   return (
@@ -43,7 +50,7 @@ const Hero = ({ title }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: 'easeInOut', delay: 6 }}
-            onClick={() => setShowWaitlist(true)}
+            onClick={handleWaitlistClick}
           >
             Waitlist
           </motion.button>
@@ -63,12 +70,13 @@ const Hero = ({ title }) => {
       </div>
       {showWaitlist && (
         <div className="modal-backdrop" onClick={handleCloseModal}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={handleCloseModal}>×</button>
             <Waitlist />
           </div>
         </div>
       )}
+      {showDemo && <Demo />} {/* Ensure Demo component is rendered when showDemo is true */}
     </div>
   );
 };
