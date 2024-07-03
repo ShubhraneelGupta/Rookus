@@ -1,94 +1,63 @@
-// App.jsx
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom"
-
-import Layout from './Layout'
 import React from 'react';
-import Hero from './components/Hero/Hero';  
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Layout from './Layout';
+import Hero from './components/Hero/Hero';
+import Contact from './components/Contact/Contact';
+import Team from './components/Team/Team';
+import Features from './components/Features/Features';
 import title from './assets/Rookus-title-4.png';
-import Contact from './components/Contact/Contact'
-import Team from './components/Team/Team'
-import kafka from './assets/kafka.jpg'
+import kafka from './assets/kafka.jpg';
 
 const teamMembers = [
   {
-    image: `${kafka}`,
+    image: kafka,
     name: 'Member 1',
     description: 'Description for member 1',
   },
   {
-    image: `${kafka}`,
+    image: kafka,
     name: 'Member 2',
     description: 'Description for member 2',
   },
-  {
-    image: `${kafka}`,
-    name: 'Member 1',
-    description: 'Description for member 1',
-  },
-  {
-    image: `${kafka}`,
-    name: 'Member 2',
-    description: 'Description for member 2',
-  },
-  {
-    image: `${kafka}`,
-    name: 'Member 2',
-    description: 'Description for member 2',
-  },
+  // Add more team members as needed
 ];
 
+const Home = () => <Hero title={title} />;
 
+const ContactUs = () => <Contact />;
 
-
-const Home = () => {
-  return <Hero title={title} />
-}
-
-const ContactUs = () => {
-  return <Contact/>
-}
-
-const Features = () => {
-  return <h1 style={{color:"white"}}>WORKING ON THIS</h1>
-}
+const FeaturesPage = () => <Features />;
 
 function App() {
   const router = createBrowserRouter([
     {
-
       element: <Layout />,
-
       children: [
         {
-          path: "/",
+          path: '/',
           element: <Home />,
         },
         {
-          path: "/home",
-          element: <Home/>
+          path: '/home',
+          element: <Home />,
         },
         {
-          path: "/contact",
+          path: '/contact',
           element: <ContactUs />,
         },
         {
-          path: "/team",
-          element: <Team members={teamMembers} />
+          path: '/team',
+          element: <Team members={teamMembers} />,
         },
         {
-          path: "/features",
-          element: <Features/>
-        }
+          path: '/features',
+          element: <FeaturesPage />,
+        },
       ],
     },
-  ])
+  ]);
 
-  return (
-      <RouterProvider router={router} />
-  )
-} 
+  return <RouterProvider router={router} />;
+}
 
 export default App;
