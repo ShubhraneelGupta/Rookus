@@ -27,9 +27,9 @@ $font-size: 1rem;
     font-weight: bold;
     align-items: center;
     margin: 0 0 0 2.5rem;
-    justify-content: center;
 
     img {
+      margin: 0;
       height: $logo-height;
       width: auto;
     }
