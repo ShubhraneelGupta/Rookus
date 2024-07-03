@@ -1,5 +1,11 @@
 import React from 'react';
 import './Team.scss';
+import logo from '../../assets/rookus-logo.jpg'; // Ensure this path is correct
+import aditya from '../../assets/adi.jpg'; // Ensure this path is correct
+import nikhil from '../../assets/nik.jpg'; // Add appropriate image files
+import aryan from '../../assets/ry.jpg'; // Add appropriate image files
+import samina from '../../assets/samina.jpg'; // Add appropriate image files
+import shubhraneel from '../../assets/shubh.jpg'; // Add appropriate image files
 
 const TeamMember = ({ image, name, role, description, email, linkedIn }) => {
   return (
@@ -23,51 +29,54 @@ const TeamMember = ({ image, name, role, description, email, linkedIn }) => {
 const Team = () => {
   const members = [
     {
-      image: 'https://via.placeholder.com/80',
-      name: 'John Doe',
-      role: 'Software Engineer',
-      description: 'John is a skilled developer with 5 years of experience in web development.',
-      email: 'john.doe@example.com',
-      linkedIn: 'https://www.linkedin.com/in/johndoe'
+      image: nikhil,
+      name: 'Nikhil Verma',
+      role: 'Cofounder',
+      description: 'Started as a Tech Project,Nikhil is assigned with building the interface of Rookus. Currently, he manages the application development, the business, and software development lifecycle at Rookus. He is involved with management of Rookus, organizing tasks, and interface development.',
+      email: 'nikhil.verma@example.com',
+      linkedIn: 'https://www.linkedin.com/in/nikhilverma'
     },
     {
-      image: 'https://via.placeholder.com/80',
-      name: 'Jane Smith',
-      role: 'Project Manager',
-      description: 'Jane has a knack for keeping projects on track and ensuring client satisfaction.',
-      email: 'jane.smith@example.com',
-      linkedIn: 'https://www.linkedin.com/in/janesmith'
+      image: aditya,
+      name: 'Aditya Gaur',
+      role: 'Cofounder',
+      description: 'Rookus was the brainchild of Aditya who developed the first concept model. Aditya is the brain of Rookus who develops new concept models using deep learning. His models have been recognized by many engineers at Flipkart, Google, CERN, and other big institutions.',
+      email: 'aditya.gaur@example.com',
+      linkedIn: 'https://www.linkedin.com/in/adityagaur'
     },
     {
-      image: 'https://via.placeholder.com/80',
-      name: 'Alice Johnson',
-      role: 'UI/UX Designer',
-      description: 'Alice is passionate about creating user-friendly interfaces and experiences.',
-      email: 'alice.johnson@example.com',
-      linkedIn: 'https://www.linkedin.com/in/alicejohnson'
+      image: aryan,
+      name: 'Aryan Raj Saxena',
+      role: 'Founding Member',
+      description: 'Aryan is the best coder of our team who solves the tech challenges and currently holds the position of CTO. Aryan is involved with handling the backend, server management, analytics, and other technical tasks. Like the hackathon days, he is always the best problem solver of the team.',
+      email: 'aryan.saxena@example.com',
+      linkedIn: 'https://www.linkedin.com/in/aryansaxena'
     },
     {
-      image: 'https://via.placeholder.com/80',
-      name: 'Bob Brown',
-      role: 'DevOps Engineer',
-      description: 'Bob ensures our infrastructure is robust and scalable.',
-      email: 'bob.brown@example.com',
-      linkedIn: 'https://www.linkedin.com/in/bobbrown'
+      image: samina,
+      name: 'Samina Parveen',
+      role: 'Founding Member',
+      description: 'The youngest on the team, Samina has been handling challenges effortlessly. Being a young entrepreneur, she brings her talent onboard with her sharp knowledge on market, business, and strategical insights. Her experience with InertiaTeens serves her immensely in handling the content, design, and marketing at Rookus.',
+      email: 'samina.parveen@example.com',
+      linkedIn: 'https://www.linkedin.com/in/saminaparveen'
     },
     {
-      image: 'https://via.placeholder.com/80',
-      name: 'Charlie Green',
-      role: 'Data Scientist',
-      description: 'Charlie specializes in data analysis and machine learning.',
-      email: 'charlie.green@example.com',
-      linkedIn: 'https://www.linkedin.com/in/charliegreen'
+      image: shubhraneel,
+      name: 'Shubhraneel',
+      role: 'Founding member',
+      description: 'Our trump card "Neel" has been one of the finest additions to the team. His ability to learn any set of skills within a limited time and his ability to adapt to any tech stack has been pivotal in the development of our team. Shubhraneel currently manages the frontend development and designing but surely he will give the team a knack for more.',
+      email: 'shubhraneel@example.com',
+      linkedIn: 'https://www.linkedin.com/in/shubhraneel'
     },
   ];
 
   return (
     <div className="team-section">
+      <div className="header">
+        <img src={logo} alt="Rookus Logo" className="logo" />
+        <h2>About Rookus</h2>
+      </div>
       <div className="about">
-        <h2>About Us</h2>
         <p>
           Welcome to our team page! We are a group of dedicated professionals committed to delivering the best results.
           Our diverse team brings a wealth of experience and expertise to every project we undertake. We believe in
