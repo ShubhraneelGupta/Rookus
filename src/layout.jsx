@@ -15,10 +15,8 @@ const Layout = () => {
             <Header logoSRC={logo} navItems={navItems} />
             <main style={{
                 flex: "1",
-                display:"flex", 
-                flexDirection:"column", 
-                justifyContent:"center", 
-                alignItems:"center"}}>                
+                alignItems:"center",
+                overflowX:"hidden"}}>                
                 <Outlet />
             </main>
             <Footer />
