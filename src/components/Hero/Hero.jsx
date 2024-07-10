@@ -2,24 +2,30 @@ import './Hero.scss';
 import { motion } from 'framer-motion';
 import iPhone from '../../assets/DEMO-removebg.png';
 import { useState } from 'react';
-import Demo from '../Demo/Demo'; // Ensure correct import path
 import Waitlist from '../Waitlist/Waitlist'; // Ensure correct import path
+import ImageGen from '../ImageGen/ImageGen'; // Ensure correct import path
 
 const Hero = ({ title }) => {
   const [showWaitlist, setShowWaitlist] = useState(false);
-  const [showDemo, setShowDemo] = useState(false);
+  const [showImageGen, setShowImageGen] = useState(false);
 
   const handleCloseModal = () => {
     setShowWaitlist(false);
-    setShowDemo(false);
+    setShowImageGen(false);
   };
 
   const handleWaitlistClick = () => {
     setShowWaitlist(true);
   };
 
-  const handleDemoClick = () => {
-    setShowDemo(true);
+  const handleImageGenClick = () => {
+    console.log("Generate via Prompt button clicked");
+    setShowImageGen(true);
+  };
+
+  const swipeVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { opacity: 1, x: 0 },
   };
 
   return (
@@ -55,14 +61,34 @@ const Hero = ({ title }) => {
             Waitlist
           </motion.button>
           <motion.button
-            className="demo-button"
+            className="waitlist-button" // Using the same class as waitlist-button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: 'easeInOut', delay: 6.5 }}
-            onClick={handleDemoClick}
+            onClick={handleImageGenClick}
           >
-            Try Demo
+            Generate via Prompt
           </motion.button>
+        </div>
+        <div className="carousel-container">
+          <motion.div
+            className="carousel"
+            initial="hidden"
+            animate="visible"
+            variants={swipeVariants}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            <motion.div className="carousel-item">
+              <img src="src\assets\image (4).png" alt="Slide 1" />
+            </motion.div>
+            <motion.div className="carousel-item">
+              <img src="src\assets\sanemi.jpg" alt="Slide 2" />
+            </motion.div>
+            <motion.div className="carousel-item">
+              <img src="src/assets/satan.jpg" alt="Slide 3" />
+            </motion.div>
+            {/* Add more slides as needed */}
+          </motion.div>
         </div>
       </div>
       <div className="app">
@@ -76,7 +102,14 @@ const Hero = ({ title }) => {
           </div>
         </div>
       )}
-      {showDemo && <Demo />} {/* Ensure Demo component is rendered when showDemo is true */}
+      {showImageGen && (
+        <div className="modal-backdrop" onClick={handleCloseModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={handleCloseModal}>×</button>
+            <ImageGen />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
