@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from 'react'
 import {motion} from 'framer-motion'
+import iPhone from '../../assets/iPhone-png.png'
 import './Features.scss'
 
 const Features = () => {
@@ -25,14 +26,20 @@ const Features = () => {
     }, [])
 
 
-    return <div ref={scrollContainerRef} className="scrollingContainer">
-        <div className="element"></div>
-        <div className="element"></div>
-        <div className="element"></div>
-        <div className="element"></div>
-        <div className="element"></div>
-        <div className="element"></div>
-    </div>
+    return <>
+      <div className="heading">
+        HEADING
+      </div>
+      <div className="subHeading">
+        DETAILS
+      </div>
+      <div ref={scrollContainerRef} className="scrollingContainer">
+        <div className="element"><img src={iPhone} /></div>
+        <div className="element"><img src={iPhone} /></div>
+        <div className="element"><img src={iPhone} /></div>
+        <div className="element"><img src={iPhone} /></div>
+      </div>
+    </>
 
 }
 
