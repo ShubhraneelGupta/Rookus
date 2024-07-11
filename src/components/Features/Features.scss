@@ -12,7 +12,10 @@
     color: white;
     font-size: 5rem;
   }
-  
+  .pinned{
+    position: sticky;
+    top: 10rem;
+  }
   .scrollingContainer{
     display: flex;
     align-items: center;
@@ -20,7 +23,6 @@
     overflow-x: hidden;
     overflow-y: hidden;
     height: 80vh;
-    padding-left: 50vw;
     padding-right: 50vw;
   
     .element {
@@ -38,14 +40,34 @@
         &:hover{
             scale: 1.1;
         }
-  
+    
         img {
           height: 100%;
           width: 100%;
         }
     }
+
+    .initialText{
+      display: flex;
+      flex-direction: column;
+      color: white;
+      font-size: 2rem;
+      min-width: 500px;
+      text-align: justify;
+      margin: 100px;
+
+      .heading {
+        font-size: 3rem;
+        text-align: center;
+        margin: 1rem;
+      }
+    }
   }
   
+
+.backgrounds {
+  height: 100vh;
+}
 
 @media (max-width: 1200px) {
   .heading {
