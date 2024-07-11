@@ -12,10 +12,6 @@
     color: white;
     font-size: 5rem;
   }
-  .pinned{
-    position: sticky;
-    top: 10rem;
-  }
   .scrollingContainer{
     display: flex;
     align-items: center;
@@ -64,10 +60,6 @@
     }
   }
   
-
-.backgrounds {
-  height: 100vh;
-}
 
 @media (max-width: 1200px) {
   .heading {
