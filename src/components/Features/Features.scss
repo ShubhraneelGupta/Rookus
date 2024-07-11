@@ -81,5 +81,21 @@
       height: 300px;
       min-width: 150px;
     }
+
+    .initialText{
+      display: flex;
+      flex-direction: column;
+      color: white;
+      font-size: 1rem;
+      min-width: 300px;
+      text-align: justify;
+      margin: 100px;
+
+      .heading {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 1rem;
+      }
+    }
   }
 }
