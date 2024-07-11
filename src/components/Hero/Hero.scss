@@ -2,7 +2,6 @@ $margin-side: 6vw;
 $margin-top: 10vh;
 $highlight-color: #f9a826;
 
-
 .wrapper {
   height: fit-content;
   display: flex;
@@ -42,11 +41,12 @@ $highlight-color: #f9a826;
     .button-container {
       margin-top: 20px;
       display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 15px;
-      justify-content: center;
 
       .waitlist-button,
-      .demo-button {
+      .generate-button {
         padding: 12px 24px;
         font-size: 1.5vw;
         font-family: monospace;
@@ -73,8 +73,30 @@ $highlight-color: #f9a826;
         background-color: #000000;
       }
 
-      .demo-button {
+      .generate-button {
         background-color: #000000;
+      }
+    }
+
+    .carousel-container {
+      margin-top: 20px;
+
+      .carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+
+        .carousel-item {
+          flex: none;
+          width: 300px; // Adjust size as needed
+          scroll-snap-align: start;
+
+          img {
+            width: 100%;
+            border-radius: 10px;
+          }
+        }
       }
     }
   }

@@ -1,87 +1,110 @@
-import os
-import numpy as np
-import pandas as pd
-from transformers import BertTokenizer, BertModel, GPT2LMHeadModel, GPT2Tokenizer
-import torch
 import gradio as gr
+import torch
+from PIL import Image
+import numpy as np
+import cv2
+from diffusers import StableDiffusionPipeline
+from huggingface_hub import login
 
-# Initialize the BERT model and tokenizer
-bert_tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-bert_model = BertModel.from_pretrained('bert-base-uncased')
 
-def get_bert_embeddings(texts):
-    inputs = bert_tokenizer(texts, return_tensors='pt', padding=True, truncation=True)
-    with torch.no_grad():
-        outputs = bert_model(**inputs)
-    return outputs.last_hidden_state[:, 0, :].numpy()
 
-def get_closest_question(user_query, questions, threshold=0.95):
-    all_texts = questions + [user_query]
-    embeddings = get_bert_embeddings(all_texts)
-    cosine_similarities = np.dot(embeddings[-1], embeddings[:-1].T) / (
-        np.linalg.norm(embeddings[-1]) * np.linalg.norm(embeddings[:-1], axis=1)
-    )
-    max_similarity = np.max(cosine_similarities)
-    if max_similarity >= threshold:
-        most_similar_index = np.argmax(cosine_similarities)
-        return questions[most_similar_index], max_similarity
-    else:
-        return None, max_similarity
+# Setup the model
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model_id = "s3nh/artwork-arcane-stable-diffusion"
+pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16 if device == "cuda" else torch.float32, use_auth_token=True)
+pipe = pipe.to(device)
 
-def generate_gpt2_response(prompt, model, tokenizer, max_length=100):
-    inputs = tokenizer.encode(prompt, return_tensors='pt')
-    outputs = model.generate(inputs, max_length=max_length, num_return_sequences=1)
-    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+# Generate T-shirt design function
+def generate_tshirt_design(text):
+    prompt = f"{text}"
+    image = pipe(prompt).images[0]
+    return image
 
-# Initialize data
-data_dict = {
-    "questions": [
-        "What is Rookus?",
-        "How does Rookus use AI in its designs?",
-        "What products does Rookus offer?",
-        "Can I see samples of Rookus' designs?",
-        "How can I join the waitlist for Rookus?",
-        "How does Rookus ensure the quality of its AI-generated designs?",
-        "Is there a custom design option available at Rookus?",
-        "How long does it take to receive a product from Rookus?"
-    ],
-    "answers": [
-        "Rookus is a startup that leverages AI to create unique designs for various products such as clothes, posters, and different arts and crafts.",
-        "Rookus uses advanced AI algorithms to generate innovative and aesthetically pleasing designs. These AI models are trained on vast datasets of art and design to produce high-quality mockups.",
-        "Rookus offers a variety of products, including clothing, posters, and a range of arts and crafts items, all featuring AI-generated designs.",
-        "Yes, Rookus provides samples of its designs on its website. You can view a gallery of products showcasing the AI-generated artwork.",
-        "To join the waitlist for Rookus, visit our website and sign up with your email. You'll receive updates on our launch and exclusive early access opportunities.",
-        "Rookus ensures the quality of its AI-generated designs through rigorous testing and refinement. Each design goes through multiple review stages to ensure it meets our high standards.",
-        "Yes, Rookus offers custom design options. You can submit your preferences, and our AI will generate a design tailored to your specifications.",
-        "The delivery time for products from Rookus varies based on the product type and location. Typically, it takes 2-4 weeks for production and delivery."
-    ],
-    "default_answer": "I'm sorry, I cannot answer this right now. Your question has been saved, and we will get back to you with a response soon."
+# Remove background from the generated design
+def remove_background(design_image):
+    design_np = np.array(design_image)
+    gray = cv2.cvtColor(design_np, cv2.COLOR_BGR2GRAY)
+    _, alpha = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY)
+    b, g, r = cv2.split(design_np)
+    rgba = [b, g, r, alpha]
+    design_np = cv2.merge(rgba, 4)
+    return design_np
+
+# T-shirt mockup generator with Gradio interface
+examples = [
+    ["MyBrand"],
+    ["Hello World"],
+    ["Team logo"],
+]
+
+css = """
+#col-container {
+    margin: 0 auto;
+    max-width: 520px;
 }
+"""
 
-# Initialize GPT-2 model and tokenizer
-gpt2_tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
-gpt2_model = GPT2LMHeadModel.from_pretrained('gpt2')
+with gr.Blocks(css=css) as demo:
+    with gr.Column(elem_id="col-container"):
+        gr.Markdown("""
+        # T-shirt Design Generator with Stable Diffusion
+        """)
 
-# Ensure the Excel file is created with necessary structure
-excel_file = 'data.xlsx'
-if not os.path.isfile(excel_file):
-    df = pd.DataFrame(columns=['question'])
-    df.to_excel(excel_file, index=False)
+        with gr.Row():
+            text = gr.Textbox(
+                label="Text",
+                placeholder="Enter text for the T-shirt design",
+                visible=True,
+            )
 
-def chatbot(user_query):
-    closest_question, similarity = get_closest_question(user_query, data_dict['questions'], threshold=0.95)
-    if closest_question and similarity >= 0.95:
-        answer_index = data_dict['questions'].index(closest_question)
-        answer = data_dict['answers'][answer_index]
-    else:
-        new_data = pd.DataFrame({'question': [user_query]})
-        df = pd.read_excel(excel_file)
-        df = pd.concat([df, new_data], ignore_index=True)
-        with pd.ExcelWriter(excel_file, engine='openpyxl', mode='w') as writer:
-            df.to_excel(writer, index=False)
-        answer = data_dict['default_answer']
-    
-    return answer
+            run_button = gr.Button("Generate Design", scale=0)
 
-iface = gr.Interface(fn=chatbot, inputs="text", outputs="text")
-iface.launch()
+        result = gr.Image(label="Design", show_label=False)
+
+        gr.Examples(
+            examples=examples,
+            inputs=[text]
+        )
+
+    def generate_tshirt_mockup(text):
+        # Generate T-shirt design
+        design_image = generate_tshirt_design(text)
+
+        # Remove background from design image
+        design_np = remove_background(design_image)
+
+        # Load blank T-shirt mockup template image
+        mockup_template = Image.open("/content/drive/MyDrive/unnamed.jpg")
+
+        # Convert mockup template to numpy array
+        mockup_np = np.array(mockup_template)
+
+        # Resize design image to fit mockup
+        design_resized = cv2.resize(design_np, (mockup_np.shape[1] // 4, mockup_np.shape[0] // 4))  # Adjust size as needed
+
+        # Center the design on the mockup
+        y_offset = (mockup_np.shape[0] - design_resized.shape[0]) // 2
+        x_offset = (mockup_np.shape[1] - design_resized.shape[1]) // 2
+        y1, y2 = y_offset, y_offset + design_resized.shape[0]
+        x1, x2 = x_offset, x_offset + design_resized.shape[1]
+
+        # Blend design with mockup using alpha channel
+        alpha_s = design_resized[:, :, 3] / 255.0 if design_resized.shape[2] == 4 else np.ones(design_resized.shape[:2])
+        alpha_l = 1.0 - alpha_s
+
+        for c in range(0, 3):
+            mockup_np[y1:y2, x1:x2, c] = (alpha_s * design_resized[:, :, c] +
+                                          alpha_l * mockup_np[y1:y2, x1:x2, c])
+
+        # Convert back to PIL image for Gradio output
+        result_image = Image.fromarray(mockup_np)
+
+        return result_image
+
+    run_button.click(
+        fn=generate_tshirt_mockup,
+        inputs=[text],
+        outputs=[result]
+    )
+
+demo.queue().launch()
