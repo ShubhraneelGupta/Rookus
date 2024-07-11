@@ -79,13 +79,17 @@ $highlight-color: #f9a826;
     }
 
     .carousel-container {
-      margin-top: 20px;
+      margin-top: 140px; // Increased margin from 20px to 40px
+      display: flex;
+      align-items: center;
 
       .carousel {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         gap: 20px;
+        width: 80vw; // Adjust width as needed
+        margin-top: 80px;
 
         .carousel-item {
           flex: none;

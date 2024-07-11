@@ -87,6 +87,15 @@ const Hero = ({ title }) => {
             <motion.div className="carousel-item">
               <img src="src/assets/satan.jpg" alt="Slide 3" />
             </motion.div>
+            <motion.div className="carousel-item">
+              <img src="src/assets/satan.jpg" alt="Slide 3" />
+            </motion.div>
+            <motion.div className="carousel-item">
+              <img src="src/assets/satan.jpg" alt="Slide 3" />
+            </motion.div>
+            <motion.div className="carousel-item">
+              <img src="src/assets/satan.jpg" alt="Slide 3" />
+            </motion.div>
             {/* Add more slides as needed */}
           </motion.div>
         </div>

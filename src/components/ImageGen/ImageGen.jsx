@@ -37,7 +37,7 @@ const ImageGen = () => {
 
       if (result && result.data && result.data[0]) {
         console.log("Generated Image Data:", result.data[0]); // Log image data
-        setMockup(`data:image/png;base64,${result.data[0]}`);
+        setMockup(result.data[0]); // Directly use the image data
       } else {
         throw new Error("Invalid result format");
       }
@@ -94,7 +94,7 @@ const ImageGen = () => {
         {mockup && (
           <div className="mockup-result">
             <h2>Mockup Result</h2>
-            <img src={mockup} alt="T-shirt Mockup" />
+            <img src={`data:image/png;base64,${mockup}`} alt="T-shirt Mockup" />
           </div>
         )}
         {!loading && !mockup && (
