@@ -1,37 +1,63 @@
-.scrollingContainer{
-  margin-top: 10rem;
-  display: flex;
-  align-items: center;
-  background-color: black;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  height: 80vh;
-  padding-left: 50vw;
-  padding-right: 50vw;
 
-  .element {
-      height: 700px;
-      min-width: 350px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 4rem;
-      margin: 5rem;
-      background: url(/src/assets/iPhone-png.png);
-      background-size: cover;
-      background-repeat: no-repeat;
-      border-radius: 30px;
-      border: 2px solid black;
-
-      &:hover{
-          scale: 1.1;
-      }
+  .heading {
+    margin-top: 7rem;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 10rem;
   }
-}
-
-.backgrounds {
+  .subHeading{
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 5rem;
+  }
   
-  font-size: 3rem;
-  background-color: black;
-  height: 100vh;
+  .scrollingContainer{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 80vh;
+    padding-left: 50vw;
+    padding-right: 50vw;
+  
+    .element {
+        height: 600px;
+        min-width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4rem;
+        margin: 5rem;
+        background-color: black;
+        background-repeat: no-repeat;
+        border-radius: 30px;
+  
+        &:hover{
+            scale: 1.1;
+        }
+  
+        img {
+          height: 100%;
+          width: 100%;
+        }
+    }
+  }
+  
+
+@media (max-width: 1200px) {
+  .heading {
+    font-size: 5rem;
+  }
+  .subHeading{
+    font-size: 2.5rem;
+  }
+  .scrollingContainer{
+    .element{
+      height: 300px;
+      min-width: 150px;
+    }
+  }
 }
