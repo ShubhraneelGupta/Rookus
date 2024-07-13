@@ -33,40 +33,40 @@ const Team = () => {
       name: 'Nikhil Verma',
       role: 'Cofounder',
       description: 'Started as a Tech Project,Nikhil is assigned with building the interface of Rookus. Currently, he manages the application development, the business, and software development lifecycle at Rookus. He is involved with management of Rookus, organizing tasks, and interface development.',
-      email: 'nikhil.verma@example.com',
-      linkedIn: 'https://www.linkedin.com/in/nikhilverma'
+      email: 'nikhil@rookus.in',
+      linkedIn: 'https://www.linkedin.com/in/nikhil-verma-3bb969201/'
     },
     {
       image: aditya,
       name: 'Aditya Gaur',
       role: 'Cofounder',
       description: 'Rookus was the brainchild of Aditya who developed the first concept model. Aditya is the brain of Rookus who develops new concept models using deep learning. His models have been recognized by many engineers at Flipkart, Google, CERN, and other big institutions.',
-      email: 'aditya.gaur@example.com',
-      linkedIn: 'https://www.linkedin.com/in/adityagaur'
+      email: 'gaur3009@gmail.com',
+      linkedIn: 'https://www.linkedin.com/in/aditya-singh-gaur-8356ba229/'
     },
     {
       image: aryan,
       name: 'Aryan Raj Saxena',
       role: 'Founding Member',
       description: 'Aryan is the best coder of our team who solves the tech challenges and currently holds the position of CTO. Aryan is involved with handling the backend, server management, analytics, and other technical tasks. Like the hackathon days, he is always the best problem solver of the team.',
-      email: 'aryan.saxena@example.com',
-      linkedIn: 'https://www.linkedin.com/in/aryansaxena'
+      email: 'aryanraj052002@gmail.com',
+      linkedIn: 'https://www.linkedin.com/in/aryan-raj-7b1100227/'
     },
     {
       image: samina,
       name: 'Samina Parveen',
       role: 'Founding Member',
       description: 'The youngest on the team, Samina has been handling challenges effortlessly. Being a young entrepreneur, she brings her talent onboard with her sharp knowledge on market, business, and strategical insights. Her experience with InertiaTeens serves her immensely in handling the content, design, and marketing at Rookus.',
-      email: 'samina.parveen@example.com',
-      linkedIn: 'https://www.linkedin.com/in/saminaparveen'
+      email: 'saminaparveen2005@gmail.com',
+      linkedIn: 'https://www.linkedin.com/in/samina-parveen-81a9ba204/'
     },
     {
       image: shubhraneel,
       name: 'Shubhraneel',
       role: 'Founding member',
       description: 'Our trump card "Neel" has been one of the finest additions to the team. His ability to learn any set of skills within a limited time and his ability to adapt to any tech stack has been pivotal in the development of our team. Shubhraneel currently manages the frontend development and designing but surely he will give the team a knack for more.',
-      email: 'shubhraneel@example.com',
-      linkedIn: 'https://www.linkedin.com/in/shubhraneel'
+      email: 'wow.sng@gmail.com',
+      linkedIn: 'https://www.linkedin.com/in/shubhraneel-gupta-a56092264/'
     },
   ];
 
